@@ -1,0 +1,7 @@
+telethon
+requests_html
+requests
+bs4
+telegraph==1.4.1
+typing-extensions==3.10.0.0
+Pyrogram==1.4.16
