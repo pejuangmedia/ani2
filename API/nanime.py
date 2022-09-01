@@ -1,4 +1,5 @@
 
+from curses.ascii import alt
 from requests_html import HTMLSession
 from bs4 import BeautifulSoup
 import requests
@@ -79,9 +80,31 @@ class gogoanime():
                 return res_list_search
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}
+    
+    #Cari Moenime    
+    def cari_moenime(query):
+        try:
+            url1 = f"https://moenime.web.id/?s={query}"
+            session = HTMLSession()
+            response = session.get(url1)
+            response_html = response.text
+            soup = BeautifulSoup(response_html, 'html.parser')
+            animes = soup.find("div", {"class": "main-content-inner  col-sm-12"}).find_all("a", rel="bookmark")
+            res_list_search = []
+            for anime in animes:
+                tit = anime["title"]
+                urll = anime["href"]
+                r = urll.split('/')
+                res_list_search.append({"name":f"{tit}","animeid":f"{urll}"})
+            if res_list_search == []:
+                return {"status":"204", "reason":"No search results found for the query"}
+            else:
+                return res_list_search
+        except requests.exceptions.ConnectionError:
+            return {"status":"404", "reason":"Check the host's network Connection"}
 
     
-    #Cari Meownime    
+    #Cari gatsunime    
     def cari_gatsunime(query):
         try:
             url1 = f"https://gatsunime.my.id/?s={query}"
@@ -216,7 +239,28 @@ class gogoanime():
 
             soup = BeautifulSoup(response_html, 'lxml')
             res_list_search =[]
-            animes =  soup.find("div", {"class": "main-content-inner col-sm-12 col-md-8"}).find_all("a", title=True)
+            animes =  soup.find_all('img', alt=True)
+            for anime in animes:
+                tit = anime["title"]
+                urll = anime["href"]
+                res_list_search.append({"name":f"{tit}","Id-Epnum":f"{urll}"})
+            if res_list_search == []:
+                return {"status":"204", "reason":"I have No Idea what the fuck went wrong"}
+            else:
+                return res_list_search
+        except requests.exceptions.ConnectionError:
+            return {"status":"404", "reason":"Check the host's network Connection"}  
+
+    def moenime():
+        try:
+            url = 'https://moenime.web.id/tag/ongoing/'
+            session = HTMLSession()
+            response = session.get(url)
+            response_html = response.text
+
+            soup = BeautifulSoup(response_html, 'lxml')
+            res_list_search =[]
+            animes =  soup.find("div", {"class": "main-content-inner  col-sm-12"}).find_all("a", rel="bookmark")
             for anime in animes:
                 tit = anime["title"]
                 urll = anime["href"]

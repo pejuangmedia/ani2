@@ -66,7 +66,7 @@ async def send_details(event, animeid):
         for i in range(len(names)):
             try:
                 buttonss.append(
-                    [Button.url(names[i], url=f"{ids[i]}"), (Check, f"!a {names[i]}", "switch_inline_query_current_chat")])
+                    [Button.url(names[i], url=f"{ids[i]}")])
             except:
                 pass
         await bot.send_message(
@@ -78,19 +78,19 @@ async def send_details(event, animeid):
 
 
 async def send_details(event, animeid):
-        anime_episode = gogo.anime_episode(animeid)
-        (names, ids, epnums) = format.format_home_results(anime_episode)
+        cari_gatsunime = gogo.cari_gatsunime(animeid)
+        (names, ids, epnums) = format.format_search_results(cari_gatsunime)
         buttonss = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
         for i in range(len(names)):
             try:
                 buttonss.append(
-                    [Button.url(names[i], url=f"{ids[i]}")])
+                    [Button.url(names[i], url=f"{ids[i]}"),])
             except:
                 pass
         await bot.send_message(
             event.chat_id,
-            f'[Kuronime] - Berikut Daftar Episode Terbaru Dari Anime {animeid}:',
+            f'[Gatsunime] - Berikut Daftar Episode Terbaru Dari Anime {animeid}:',
             buttons=buttonss
             
             )

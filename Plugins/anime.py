@@ -92,11 +92,12 @@ class Anime():
         buttonss = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
         for i in range(len(names)):
-            try:
-                buttonss.append(
-                    [Button.url(names[i], url=f"{ids[i]}")])
-            except:
-                pass
+            if len(names[i]) > 1:
+                try:
+                    buttonss.append(
+                        [Button.url(names[i], url=f"{ids[i]}")])
+                except:
+                    pass
         if '/kuronime' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
@@ -116,7 +117,7 @@ class Anime():
                     if len(names[i]) > 40:
                         try:
                             buttons1.append([Button.inline(
-                                f"{names[i][:20]}. . .{names[i][-20:]}", data=f"dets:{ids[i]}")])
+                                f"{names[i][:20]}. . .{names[i][-20:]}", data=f"dets:{ids[i]}"), Button.inline(Check, f"!a {names[i]}", "switch_inline_query_current_chat")])
                         except:
                             bot.send_message(
                                 event.chat_id,
@@ -148,7 +149,7 @@ class Anime():
         for i in range(len(names)):
             try:
                 buttonss.append(
-                    [Button.url(names[i], url=f"{ids[i]}")])
+                    [Button.url(names[i], url=f"{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
             except:
                 pass
         if '/meownime' == event.raw_text:
@@ -170,7 +171,7 @@ class Anime():
                     if len(names[i]) > 55:
                         try:
                             buttons1.append([Button.url(
-                                f"{names[i][:22]}. . .{names[i][-22:]}", url=f"split:{anime_name}:{ids[i]}")])
+                                f"{names[i][:22]}. . .{names[i][-22:]}", url=f"split:{anime_name}:{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
                         except:
                             bot.send_message(
                                 event.chat_id,
@@ -179,7 +180,62 @@ class Anime():
                             )
                     else:
                         buttons1.append(
-                            [Button.url(names[i], url=f"{ids[i]}")])
+                            [Button.url(names[i], url=f"{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
+
+                await bot.send_message(
+                    event.chat_id,
+                    f'Hasil Yang Tersedia:\n\n',
+                    buttons=buttons1)
+            except:
+                await bot.send_message(
+                    event.chat_id,
+                    'Not Found, Check for Typos or search Japanese name',
+                    file='https://media.giphy.com/media/4pk6ba2LUEMi4/giphy.gif'
+                )
+    
+
+    #mencari moenime
+    @bot.on(events.NewMessage(pattern=r"^/moenime|^/moenime@ccgnimeX_bot"))
+    async def event_handler_anime(event):
+        moenime = gogo.moenime()
+        (names, ids, epnums) = format.format_home_results(meownime)
+        buttonss = [[], [Button.inline(
+                    "Tutup", data=f"close_data")]]
+        for i in range(len(names)):
+            try:
+                buttonss.append(
+                    [Button.url(names[i], url=f"{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
+            except:
+                pass
+        if '/meownime' == event.raw_text:
+            await bot.send_message(
+                event.chat_id,
+                'Berikut Daftar Anime Terbaru Dari Sumber Meownime:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/moenime judul anime`\n\n',
+                 buttons=buttonss,
+            )
+        elif '/meownime' in event.raw_text:
+            text = event.raw_text.split()
+            text.pop(0)
+            anime_name = " ".join(text)
+            cari_moenime = gogo.cari_moenime(anime_name)
+            try:
+                (names, ids) = format.format_search_results(cari_moenime)
+                buttons1 = [[], [Button.inline(
+                    "Tutup", data=f"close_data")]]
+                for i in range(len(names)):
+                    if len(names[i]) > 55:
+                        try:
+                            buttons1.append([Button.url(
+                                f"{names[i][:22]}. . .{names[i][-22:]}", url=f"split:{anime_name}:{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
+                        except:
+                            bot.send_message(
+                                event.chat_id,
+                                "Name u searched for is too long",
+                                file='https://media.giphy.com/media/4pk6ba2LUEMi4/giphy.gif'
+                            )
+                    else:
+                        buttons1.append(
+                            [Button.url(names[i], url=f"{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
 
                 await bot.send_message(
                     event.chat_id,
@@ -208,7 +264,7 @@ class Anime():
         if '/gatsunime' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Berikut Daftar Anime Terbaru Dari Sumber Gatsunmie:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/gatsunime judul anime`\n\n',
+                'Berikut Daftar Anime Terbaru Dari Sumber Gatsunime:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/gatsunime judul anime`\n\n',
                  buttons=buttonss,
             )
         elif '/gatsunime' in event.raw_text:
@@ -274,7 +330,8 @@ class Anime():
             search_result = gogo.get_search_results(anime_name)
             try:
                 (names, ids) = format.format_search_results(search_result)
-                buttons1 = []
+                buttons1 = [[], [Button.inline(
+                    "Tutup", data=f"close_data")]]
                 buttons2 = [Button.inline(
                     "Download", data=f"Download")]
                 for i in range(len(names)):
@@ -290,7 +347,7 @@ class Anime():
                             )
                     else:
                         buttons1.append(
-                            [Button.url(names[i], url=f"{ids[i]}")])
+                            [Button.url(names[i], url=f"{ids[i]}"), Button.switch_inline('🔎', f"!a {names[i]}", "switch_inline_query_current_chat")])
                             
 
                 await bot.send_message(
