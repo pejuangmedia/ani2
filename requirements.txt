@@ -1,4 +1,4 @@
-telethon
+Telethon==1.25.0
 requests_html
 requests
 bs4
