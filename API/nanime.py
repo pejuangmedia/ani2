@@ -294,7 +294,7 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}
 
-    def Kuroz():
+    def Kuro():
         try:
             url = 'https://45.12.2.28/'
             session = HTMLSession()
@@ -315,7 +315,7 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}
 
-    def Kuro():
+    def Kuroz():
         try:
             url = 'https://45.12.2.28/'
             session = HTMLSession()
