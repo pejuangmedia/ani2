@@ -28,8 +28,8 @@ This Bot have some awesome features listed below everything add free
 - Download any anime avilable on GoGoAnime website
   - Easy access to currently airing anime with  `/latest` command
   - Download any particular episode via search
-  - Batch download upto 15 episodes in telegram itsel
-  - Batch download upto 100 episodes via **1DM** app
+  - file download upto 15 episodes in telegram itsel
+  - file download upto 100 episodes via **1DM** app
 
 - Read manga.
   - The Manga is provided as HTML file instead of pdf as its much faster and u can simply open it in **Google Chrome** for easy reading

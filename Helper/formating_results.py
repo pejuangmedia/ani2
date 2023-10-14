@@ -30,7 +30,7 @@ def format_download_results(download_results):
 
     return result
 
-def batch_download_txt(name, list_of_links):
+def file_download_txt(name, list_of_links):
     x = ''
     for i in list_of_links:
         y = i.get("(1080P-mp4)")

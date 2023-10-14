@@ -10,7 +10,7 @@ class gogoanime():
         self.animeid = animeid
         self.episode_num = episode_num
 
-    # Cari Batch
+    # Cari file
     def get_search_results(query):
         try:
             url1 = f"https://t.me/s/panimeid?q={query}%20MAL"
@@ -107,7 +107,7 @@ class gogoanime():
     #Cari gatsunime    
     def cari_gatsunime(query):
         try:
-            url1 = f"https://gatsunime.my.id/?s={query}"
+            url1 = f"https://desugami.com/?s={query}"
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -275,7 +275,7 @@ class gogoanime():
     
     def gatsunime():
         try:
-            url = 'https://gatsunime.my.id/'
+            url = 'https://desugami.com/'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text

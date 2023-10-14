@@ -25,7 +25,7 @@ class Anime():
                 pass
         await bot.send_message(
             event.chat_id,
-            'Sekarang Kalian Bisa Mencari Daftar Urutan Anime batch Via Bot.\nGunakan Perintah /list_(huruf/angka)_(nomor halaman) .\nSeperti ini : \n\nHuruf : /list_a_00\nAngka: /list_2_00 \n\nNOTE: Gunakan huruf kecil semua.',
+            'Sekarang Kalian Bisa Mencari Daftar Urutan Anime file Via Bot.\nGunakan Perintah /list_(huruf/angka)_(nomor halaman) .\nSeperti ini : \n\nHuruf : /list_a_00\nAngka: /list_2_00 \n\nNOTE: Gunakan huruf kecil semua.',
             file='https://telegra.ph/file/162aee1681fcc7ff5b3b3.mp4'
             )
 
@@ -85,7 +85,7 @@ class Anime():
             
 
     #mencari kuronime
-    @bot.on(events.NewMessage(pattern=r"^/kuronime|^/kuronime@ccgnimeX_bot"))
+    @bot.on(events.NewMessage(pattern=r"^/kuronime|^/kuronime@cipdbot"))
     async def event_handler_anime(event):
         kuronime = gogo.kuronime()
         (names, ids, epnums) = format.format_home_results(kuronime)
@@ -140,7 +140,7 @@ class Anime():
                 )  
 
     #mencari meownime
-    @bot.on(events.NewMessage(pattern=r"^/meownime|^/meownime@ccgnimeX_bot"))
+    @bot.on(events.NewMessage(pattern=r"^/meownime|^/meownime@cipdbot"))
     async def event_handler_anime(event):
         meownime = gogo.meownime()
         (names, ids, epnums) = format.format_home_results(meownime)
@@ -195,7 +195,7 @@ class Anime():
     
 
     #mencari moenime
-    @bot.on(events.NewMessage(pattern=r"^/moenime|^/moenime@ccgnimeX_bot"))
+    @bot.on(events.NewMessage(pattern=r"^/moenime|^/moenime@cipdbot"))
     async def event_handler_anime(event):
         moenime = gogo.moenime()
         (names, ids, epnums) = format.format_home_results(meownime)
@@ -249,7 +249,7 @@ class Anime():
                 ) 
 
     #mencari meownime
-    @bot.on(events.NewMessage(pattern=r"^/gatsunime|^/gatsunime@ccgnimeX_bot"))
+    @bot.on(events.NewMessage(pattern=r"^/gatsunime|^/gatsunime@cipdbot"))
     async def event_handler_anime(event):
         gatsunime = gogo.gatsunime()
         (names, ids, epnums) = format.format_home_results(gatsunime)
@@ -303,27 +303,27 @@ class Anime():
                 )
 
         
-    @bot.on(events.NewMessage(pattern=r"^/batch"))
+    @bot.on(events.NewMessage(pattern=r"^/file"))
     async def event_handler_anime(event):
 
-        if '/batch' == event.raw_text:
+        if '/file' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Perintah harus digunakan seperti ini:\n/batch <nama anime>\ncontoh: /batch Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/batch comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
+                'Perintah harus digunakan seperti ini:\n/file <nama anime>\ncontoh: /file Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/file comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
                 file='https://telegra.ph/file/4972450b960f17a8e4abb.jpg',
                 buttons=([Button.inline(
                     "Tutup", data=f"close_data")])
                 
             )
-        elif '/batch@cipdbot' == event.raw_text:
+        elif '/file@cipdbot' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Perintah harus digunakan seperti ini:\n/batch <nama anime>\ncontoh: /batch Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/batch comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
+                'Perintah harus digunakan seperti ini:\n/file <nama anime>\ncontoh: /file Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/file comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
                 file='https://telegra.ph/file/4972450b960f17a8e4abb.jpg',
                 
             )
         
-        elif '/batch' in event.raw_text:
+        elif '/file' in event.raw_text:
             text = event.raw_text.split()
             text.pop(0)
             anime_name = " ".join(text)
@@ -362,10 +362,10 @@ class Anime():
                     file='https://media.giphy.com/media/4pk6ba2LUEMi4/giphy.gif',
                 )  
 
-    @bot.on(events.NewMessage(pattern="/batchp"))
-    async def event_handler_batch(event):
+    @bot.on(events.NewMessage(pattern="/filep"))
+    async def event_handler_file(event):
         if event.chat_id < 0:
-            await event.reply("If you want to download in batch contact me in pm\n@Anime_Gallery_Robot")
+            await event.reply("If you want to download in file contact me in pm\n@Anime_Gallery_Robot")
             return
         try:
             text = event.raw_text.split()
@@ -374,7 +374,7 @@ class Anime():
             split_data = anime_name.split(":")
             if int(split_data[2]) - int(split_data[1]) > 15:
                 await event.reply(
-                    "Batch Download is capped at 15 episodes due to performance issues\nPlease download in batches of less than 15 for now"
+                    "file Download is capped at 15 episodes due to performance issues\nPlease download in filees of less than 15 for now"
                 )
 
             else:
@@ -386,7 +386,7 @@ class Anime():
             await event.reply("Something went wrong.....\nCheck if you entered command properly\n\nUse /help or go to \n@Anime_Gallery_Robot_Support if you have any doubts")
 
     @bot.on(events.NewMessage(pattern="/download"))
-    async def event_handler_batch(event):
+    async def event_handler_file(event):
         try:
             text = event.raw_text.split()
             text.pop(0)
@@ -394,14 +394,14 @@ class Anime():
             split_data = anime_name.split(":")
             if int(split_data[2]) - int(split_data[1]) > 100:
                 await event.reply(
-                    "Batch Download is capped at 100 episodes due to performance issues\nPlease download in batches of less than 100 for now"
+                    "file Download is capped at 100 episodes due to performance issues\nPlease download in filees of less than 100 for now"
                 )
                 return
             list_of_links = []
             await event.reply("Be Patient this is a slow process....")
             for i in range(int(split_data[1]), (int(split_data[2]) + 1)):
                 list_of_links.append(gogo.get_episodes_link(split_data[0], i))
-            format.batch_download_txt(split_data[0], list_of_links)
+            format.file_download_txt(split_data[0], list_of_links)
             await bot.send_message(
                 event.chat_id,
                 "Import this file in **1DM** app.",
