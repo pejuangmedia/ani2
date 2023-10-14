@@ -12,7 +12,7 @@ import random
 class Anime():
 
     # Daftar list Anime
-    @bot.on(events.NewMessage(pattern="/b_list", func=lambda e: e.is_private))
+    @bot.on(events.NewMessage(pattern="daftar", func=lambda e: e.is_private))
     async def event_handler_latest(event):
         a_list = gogo.a_list()
         (names, ids, epnums) = format.format_home_results(a_list)
@@ -25,12 +25,12 @@ class Anime():
                 pass
         await bot.send_message(
             event.chat_id,
-            'Sekarang Kalian Bisa Mencari Daftar Urutan Anime file Via Bot.\nGunakan Perintah /list_(huruf/angka)_(nomor halaman) .\nSeperti ini : \n\nHuruf : /list_a_00\nAngka: /list_2_00 \n\nNOTE: Gunakan huruf kecil semua.',
+            'Sekarang Kalian Bisa melihat list anime via bot.\nGunakan Perintah (huruf/angka).\nSeperti ini : \n\nHuruf : A\nAngka: 1 \n\nNOTE: Gunakan huruf Besar semua.',
             file='https://telegra.ph/file/162aee1681fcc7ff5b3b3.mp4'
             )
 
     # LIST ANIME A 
-    @bot.on(events.NewMessage(pattern="/list_a_00"))
+    @bot.on(events.NewMessage(pattern="A"))
     async def event_handler_latest(event):
         a_list = gogo.a_list()
         (names, ids, epnums) = format.format_home_results(a_list)
@@ -43,15 +43,15 @@ class Anime():
                 pass
         await bot.send_message(
             event.chat_id,
-            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah /list_(huruf/angka)_(nomor halaman) .  \nSeperti ini : \n\nHuruf : `/list_a_00` \nAngka: `/list_2_00` \n\nNOTE: Gunakan huruf kecil semua. ',
+            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah (huruf/angka) .  \nSeperti ini : \n\nHuruf : `A` \nAngka: `1` \n\nNOTE: Gunakan huruf besar semua. ',
             buttons=buttonss
             )
 
-    # LIST ANIME A 
-    @bot.on(events.NewMessage(pattern="/list_a_01"))
+    # LIST ANIME B 
+    @bot.on(events.NewMessage(pattern="B"))
     async def event_handler_latest(event):
-        a_list1 = gogo.a_list1()
-        (names, ids, epnums) = format.format_home_results(a_list1)
+        b_list = gogo.b_list()
+        (names, ids, epnums) = format.format_home_results(b_list)
         buttonss = []
         for i in range(len(names)):
             try:
@@ -61,15 +61,15 @@ class Anime():
                 pass
         await bot.send_message(
             event.chat_id,
-            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah /list_(huruf/angka)_(nomor halaman) .  \nSeperti ini : \n\nHuruf : `/list_a_00` \nAngka: `/list_2_00` \n\nNOTE: Gunakan huruf kecil semua. ',
+            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah (huruf/angka) .  \nSeperti ini : \n\nHuruf : `A` \nAngka: `1` \n\nNOTE: Gunakan huruf besar semua. ',
             buttons=buttonss
             )        
 
-    # LIST ANIME B        
-    @bot.on(events.NewMessage(pattern="/b-list"))
+    # LIST ANIME C        
+    @bot.on(events.NewMessage(pattern="C"))
     async def event_handler_latest(event):
-        b_list1 = gogo.b_list1()
-        (names, ids, epnums) = format.format_home_results(b_list1)
+        c_list = gogo.c_list()
+        (names, ids, epnums) = format.format_home_results(c_list)
         buttonss = []
         for i in range(len(names)):
             try:
@@ -79,7 +79,25 @@ class Anime():
                 pass
         await bot.send_message(
             event.chat_id,
-            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah /list_(huruf/angka)_(nomor halaman) .  \nSeperti ini : \n\nHuruf : `/list_a_00` \nAngka: `/list_2_00` \n\nNOTE: Gunakan huruf kecil semua. ',
+            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah (huruf/angka) .  \nSeperti ini : \n\nHuruf : `A` \nAngka: `1` \n\nNOTE: Gunakan huruf besar semua. ',
+            buttons=buttonss
+            ) 
+            
+    # LIST ANIME D        
+    @bot.on(events.NewMessage(pattern="D"))
+    async def event_handler_latest(event):
+        d_list = gogo.d_list()
+        (names, ids, epnums) = format.format_home_results(d_list)
+        buttonss = []
+        for i in range(len(names)):
+            try:
+                buttonss.append(
+                    [Button.url(names[i], url=f"{ids[i]}")])
+            except:
+                pass
+        await bot.send_message(
+            event.chat_id,
+            'Daftar Anime Berdasarkan Pencarian :\nGunakan perintah (huruf/angka) .  \nSeperti ini : \n\nHuruf : `A` \nAngka: `1` \n\nNOTE: Gunakan huruf besar semua. ',
             buttons=buttonss
             ) 
             
@@ -90,7 +108,7 @@ class Anime():
         Kuro = gogo.Kuro()
         (names, ids, epnums) = format.format_home_results(Kuro)
         buttonss = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
         for i in range(len(names)):
             if len(names[i]) > 1:
                 try:
@@ -112,7 +130,7 @@ class Anime():
             try:
                 (names, ids) = format.format_search_results(cari_Kuro)
                 buttons1 = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
                 for i in range(len(names)):
                     if len(names[i]) > 40:
                         try:
@@ -145,7 +163,7 @@ class Anime():
         meownime = gogo.meownime()
         (names, ids, epnums) = format.format_home_results(meownime)
         buttonss = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
         for i in range(len(names)):
             try:
                 buttonss.append(
@@ -166,7 +184,7 @@ class Anime():
             try:
                 (names, ids) = format.format_search_results(cari_meownime)
                 buttons1 = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
                 for i in range(len(names)):
                     if len(names[i]) > 55:
                         try:
@@ -200,7 +218,7 @@ class Anime():
         moenime = gogo.moenime()
         (names, ids, epnums) = format.format_home_results(meownime)
         buttonss = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
         for i in range(len(names)):
             try:
                 buttonss.append(
@@ -221,7 +239,7 @@ class Anime():
             try:
                 (names, ids) = format.format_search_results(cari_moenime)
                 buttons1 = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
                 for i in range(len(names)):
                     if len(names[i]) > 55:
                         try:
@@ -254,7 +272,7 @@ class Anime():
         desu = gogo.desu()
         (names, ids, epnums) = format.format_home_results(desu)
         buttonss = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
         for i in range(len(names)):
             try:
                 buttonss.append(
@@ -275,7 +293,7 @@ class Anime():
             try:
                 (names, ids) = format.format_search_results(cari_desu)
                 buttons1 = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
                 for i in range(len(names)):
                     if len(names[i]) > 55:
                         try:
@@ -306,24 +324,24 @@ class Anime():
     @bot.on(events.NewMessage(pattern=r"^/file"))
     async def event_handler_anime(event):
 
-        if '/file' == event.raw_text:
+        if '/pid' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Perintah harus digunakan seperti ini:\n/file <nama anime>\ncontoh: /file Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/file comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
-                file='https://telegra.ph/file/4972450b960f17a8e4abb.jpg',
+                'Perintah harus digunakan seperti ini:\n/pid <nama anime>\ncontoh: /pid Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/pid comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
+                file='https://graph.org/file/cbe59f647382dc0e30b7c.jpg',
                 buttons=([Button.inline(
-                    "Tutup", data=f"close_data")])
+                    "Tutup", data=f"close")])
                 
             )
-        elif '/file@cipdbot' == event.raw_text:
+        elif '/pid@cipdbot' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Perintah harus digunakan seperti ini:\n/file <nama anime>\ncontoh: /file Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/file comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
-                file='https://telegra.ph/file/4972450b960f17a8e4abb.jpg',
+                'Perintah harus digunakan seperti ini:\n/pid <nama anime>\ncontoh: /pid Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/pid comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
+                file='https://graph.org/file/cbe59f647382dc0e30b7c.jpg',
                 
             )
         
-        elif '/file' in event.raw_text:
+        elif '/pid' in event.raw_text:
             text = event.raw_text.split()
             text.pop(0)
             anime_name = " ".join(text)
@@ -331,7 +349,7 @@ class Anime():
             try:
                 (names, ids) = format.format_search_results(search_result)
                 buttons1 = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
                 buttons2 = [Button.inline(
                     "Download", data=f"Download")]
                 for i in range(len(names)):

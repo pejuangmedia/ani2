@@ -7,7 +7,7 @@ help_text = '''List of commands:
 
 /latest : to get list of latest episodes released
 
-/file <animeid>:<from episode>:<to episode> : For getting download links in bulk
+/pid <animeid>:<from episode>:<to episode> : For getting download links in bulk
 
 /download : same as file download but you get 1 file you can import in **1DM** (here the highest possible resolution is provided so if you want to choose resolution use old file command)
 

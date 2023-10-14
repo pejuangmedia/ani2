@@ -61,7 +61,7 @@ async def send_details(event, animeid):
         anime_episode = gogo.anime_episode(animeid)
         (names, ids, epnums) = format.format_home_results(anime_episode)
         buttonss = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
                     
         for i in range(len(names)):
             try:
@@ -81,7 +81,7 @@ async def send_details(event, animeid):
         cari_desu = gogo.cari_desu(animeid)
         (names, ids, epnums) = format.format_search_results(cari_desu)
         buttonss = [[], [Button.inline(
-                    "Tutup", data=f"close_data")]]
+                    "Tutup", data=f"close")]]
         for i in range(len(names)):
             try:
                 buttonss.append(
