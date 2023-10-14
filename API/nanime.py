@@ -383,7 +383,7 @@ class gogoanime():
     # LIST ANIME B
     def b_list1():
         try:
-            url1 = 'https://t.me/s/panimeid?q=Daftar+Isi+%3A+%5B+B+%5D%20BANANA'
+            url1 = 'https://t.me/s/animepid?q=Daftar+Isi+%3A+%5B+B+%5D%20BANANA'
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
