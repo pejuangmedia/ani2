@@ -84,11 +84,11 @@ class Anime():
             ) 
             
 
-    #mencari kuronime
-    @bot.on(events.NewMessage(pattern=r"^/kuronime|^/kuronime@cipdbot"))
+    #mencari Kuro
+    @bot.on(events.NewMessage(pattern=r"^/Kuro|^/Kuro@cipdbot"))
     async def event_handler_anime(event):
-        kuronime = gogo.kuronime()
-        (names, ids, epnums) = format.format_home_results(kuronime)
+        Kuro = gogo.Kuro()
+        (names, ids, epnums) = format.format_home_results(Kuro)
         buttonss = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
         for i in range(len(names)):
@@ -98,19 +98,19 @@ class Anime():
                         [Button.url(names[i], url=f"{ids[i]}")])
                 except:
                     pass
-        if '/kuronime' == event.raw_text:
+        if '/Kuro' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Berikut Daftar Anime Terbaru Dari Sumber Kuronime:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/kuronime judul anime`\n\n',
+                'Berikut Daftar Anime Terbaru Dari Sumber Kuro:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/Kuro judul anime`\n\n',
                  buttons=buttonss,
             )
-        elif '/kuronime' in event.raw_text:
+        elif '/Kuro' in event.raw_text:
             text = event.raw_text.split()
             text.pop(0)
             anime_name = " ".join(text)
-            cari_kuronime = gogo.cari_kuronime(anime_name)
+            cari_Kuro = gogo.cari_Kuro(anime_name)
             try:
-                (names, ids) = format.format_search_results(cari_kuronime)
+                (names, ids) = format.format_search_results(cari_Kuro)
                 buttons1 = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
                 for i in range(len(names)):
@@ -249,10 +249,10 @@ class Anime():
                 ) 
 
     #mencari meownime
-    @bot.on(events.NewMessage(pattern=r"^/gatsunime|^/gatsunime@cipdbot"))
+    @bot.on(events.NewMessage(pattern=r"^/desu|^/desu@cipdbot"))
     async def event_handler_anime(event):
-        gatsunime = gogo.gatsunime()
-        (names, ids, epnums) = format.format_home_results(gatsunime)
+        desu = gogo.desu()
+        (names, ids, epnums) = format.format_home_results(desu)
         buttonss = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
         for i in range(len(names)):
@@ -261,19 +261,19 @@ class Anime():
                     [Button.url(names[i], url=f"{ids[i]}")])
             except:
                 pass
-        if '/gatsunime' == event.raw_text:
+        if '/desu' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
-                'Berikut Daftar Anime Terbaru Dari Sumber Gatsunime:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/gatsunime judul anime`\n\n',
+                'Berikut Daftar Anime Terbaru Dari Sumber desu:\nUntuk Mencari Anime Silahkan Gunakan Perintah `/desu judul anime`\n\n',
                  buttons=buttonss,
             )
-        elif '/gatsunime' in event.raw_text:
+        elif '/desu' in event.raw_text:
             text = event.raw_text.split()
             text.pop(0)
             anime_name = " ".join(text)
-            cari_gatsunime = gogo.cari_gatsunime(anime_name)
+            cari_desu = gogo.cari_desu(anime_name)
             try:
-                (names, ids) = format.format_search_results(cari_gatsunime)
+                (names, ids) = format.format_search_results(cari_desu)
                 buttons1 = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
                 for i in range(len(names)):

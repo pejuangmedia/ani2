@@ -71,15 +71,15 @@ async def send_details(event, animeid):
                 pass
         await bot.send_message(
             event.chat_id,
-            f'[Kuronime] - Berikut Daftar Episode Terbaru Dari Anime {animeid}:',
+            f'[Kuro] - Berikut Daftar Episode Terbaru Dari Anime {animeid}:',
             buttons=buttonss
             
             )
 
 
 async def send_details(event, animeid):
-        cari_gatsunime = gogo.cari_gatsunime(animeid)
-        (names, ids, epnums) = format.format_search_results(cari_gatsunime)
+        cari_desu = gogo.cari_desu(animeid)
+        (names, ids, epnums) = format.format_search_results(cari_desu)
         buttonss = [[], [Button.inline(
                     "Tutup", data=f"close_data")]]
         for i in range(len(names)):
@@ -90,7 +90,7 @@ async def send_details(event, animeid):
                 pass
         await bot.send_message(
             event.chat_id,
-            f'[Gatsunime] - Berikut Daftar Episode Terbaru Dari Anime {animeid}:',
+            f'[desu] - Berikut Daftar Episode Terbaru Dari Anime {animeid}:',
             buttons=buttonss
             
             )

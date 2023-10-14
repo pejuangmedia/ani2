@@ -37,8 +37,8 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}
 
-    #Cari Kuronime    
-    def cari_kuronime(query):
+    #Cari Kuro    
+    def cari_Kuro(query):
         try:
             url1 = f"https://45.12.2.28/?s={query}"
             session = HTMLSession()
@@ -104,8 +104,8 @@ class gogoanime():
             return {"status":"404", "reason":"Check the host's network Connection"}
 
     
-    #Cari gatsunime    
-    def cari_gatsunime(query):
+    #Cari desu    
+    def cari_desu(query):
         try:
             url1 = f"https://desugami.com/?s={query}"
             session = HTMLSession()
@@ -184,14 +184,14 @@ class gogoanime():
 
     def get_episodes_link(animeid, episode_num):
         try:
-            animelink = f'https://nanimex2.com/anime/{animeid}'
+            animelink = f'https://zoronime.com/anime/{animeid}'
             response = requests.get(animelink)
             plainText = response.text
             soup = BeautifulSoup(plainText, "lxml")
             lnk = soup.find(id="episode_page")
             source_url = lnk.find("li").a
             tit_url = soup.find("h1").text
-            URL_PATTERN = 'https://nanimex2.com/episode/{}-episode-{}'
+            URL_PATTERN = 'https://zoronime.com/episode/{}-episode-{}'
             url = URL_PATTERN.format(animeid, episode_num)
             srcCode = requests.get(url)
             plainText = srcCode.text
@@ -273,7 +273,7 @@ class gogoanime():
             return {"status":"404", "reason":"Check the host's network Connection"}  
         
     
-    def gatsunime():
+    def desu():
         try:
             url = 'https://desugami.com/'
             session = HTMLSession()
@@ -294,7 +294,7 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}
 
-    def kuronime():
+    def Kuro():
         try:
             url = 'https://45.12.2.28/'
             session = HTMLSession()
@@ -315,7 +315,7 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}
 
-    def kuronimez():
+    def Kuro():
         try:
             url = 'https://45.12.2.28/'
             session = HTMLSession()
@@ -339,7 +339,7 @@ class gogoanime():
     # LIST ANIME A
     def a_list():
         try:
-            url = 'https://t.me/s/animepid?q=daftar+isi%20[%20A%20]'
+            url = 'https://t.me/s/animepid?q=%E2%97%88%20Daftar%20Isi%20:%20[%20A%20]%20%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%20%E2%97%A6%20%E2%9D%96%20%E2%97%A6%20%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%20%E2%9E%A5%20Ahiru%20no%20Sora'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -361,7 +361,7 @@ class gogoanime():
     # LIST ANIME A - 01      
     def a_list1():
         try:
-            url = 'https://t.me/s/animepid?q=daftar%20anime%20A%20-%201'
+            url = 'https://t.me/s/animepid?q=%E2%97%88%20Daftar%20Isi%20:%20[%20A%20]%20%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%20%E2%97%A6%20%E2%9D%96%20%E2%97%A6%20%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%E2%94%81%20%E2%9E%A5%20Ahiru%20no%20Sora'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -383,7 +383,7 @@ class gogoanime():
     # LIST ANIME B
     def b_list1():
         try:
-            url1 = 'https://t.me/s/animepid?q=Daftar+Isi+%3A+%5B+B+%5D%20BANANA'
+            url1 = 'https://t.me/s/animepid?q=%E2%97%88%20Daftar%20Isi%20:%20[%20B%20]'
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -402,7 +402,7 @@ class gogoanime():
         except requests.exceptions.ConnectionError:
             return {"status":"404", "reason":"Check the host's network Connection"}        
 
-        # Query kuronime
+        # Query Kuro
     def anime_episode(animeid):
         try:
             url1 = 'https://45.12.2.28/anime/{}'.format(animeid)
@@ -428,7 +428,7 @@ class gogoanime():
 
     
     def jugad(animeid, episode_num):
-        url = f"https://nanimex2.com/episode/{animeid}-episode-{episode_num}"
+        url = f"https://zoronime.com/episode/{animeid}-episode-{episode_num}"
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
         response = requests.get(url, headers=headers)
