@@ -315,7 +315,7 @@ class Anime():
                     "Tutup", data=f"close_data")])
                 
             )
-        elif '/batch@ccgnimeX_bot' == event.raw_text:
+        elif '/batch@cipdbot' == event.raw_text:
             await bot.send_message(
                 event.chat_id,
                 'Perintah harus digunakan seperti ini:\n/batch <nama anime>\ncontoh: /batch Dororo\n\n**Note:** Ketik Judul dengan benar, kalian juga bisa menambahkan genre, tag, tipe dll secara bersamaan.\nSeperti ini : `/batch comedy romance harem movie`\nDan sebagiannya, Maksimal akan ditampilkan 20 Hasil dari yang terbaru.',
@@ -358,7 +358,7 @@ class Anime():
             except:
                 await bot.send_message(
                     event.chat_id,
-                    'Tidak ditemukan kata kunci yang dicari.\n**Note:** Gunakan Kata Kunci yang jelas. atau anime tidak tersedia dichannel. Silahkan cari di channel @downloadanimebatch',
+                    'Tidak ditemukan kata kunci yang dicari.\n**Note:** Gunakan Kata Kunci yang jelas. atau anime tidak tersedia dichannel. Silahkan cari di channel @panimeid',
                     file='https://media.giphy.com/media/4pk6ba2LUEMi4/giphy.gif',
                 )  
 

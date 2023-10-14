@@ -13,7 +13,7 @@ class gogoanime():
     # Cari Batch
     def get_search_results(query):
         try:
-            url1 = f"https://t.me/s/downloadanimebatch?q={query}%20MAL"
+            url1 = f"https://t.me/s/panimeid?q={query}%20MAL"
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -40,7 +40,7 @@ class gogoanime():
     #Cari Kuronime    
     def cari_kuronime(query):
         try:
-            url1 = f"https://45.12.2.2/?s={query}"
+            url1 = f"https://45.12.2.28/?s={query}"
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -84,7 +84,7 @@ class gogoanime():
     #Cari Moenime    
     def cari_moenime(query):
         try:
-            url1 = f"https://moenime.web.id/?s={query}"
+            url1 = f"https://moenime.com/?s={query}"
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -184,14 +184,14 @@ class gogoanime():
 
     def get_episodes_link(animeid, episode_num):
         try:
-            animelink = f'https://nanimex.org/anime/{animeid}'
+            animelink = f'https://nanimex2.com/anime/{animeid}'
             response = requests.get(animelink)
             plainText = response.text
             soup = BeautifulSoup(plainText, "lxml")
             lnk = soup.find(id="episode_page")
             source_url = lnk.find("li").a
             tit_url = soup.find("h1").text
-            URL_PATTERN = 'https://nanimex.org/episode/{}-episode-{}'
+            URL_PATTERN = 'https://nanimex2.com/episode/{}-episode-{}'
             url = URL_PATTERN.format(animeid, episode_num)
             srcCode = requests.get(url)
             plainText = srcCode.text
@@ -253,7 +253,7 @@ class gogoanime():
 
     def moenime():
         try:
-            url = 'https://moenime.web.id/tag/ongoing/'
+            url = 'https://moenime.com/tag/ongoing/'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -296,7 +296,7 @@ class gogoanime():
 
     def kuronime():
         try:
-            url = 'https://45.12.2.2/'
+            url = 'https://45.12.2.28/'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -317,7 +317,7 @@ class gogoanime():
 
     def kuronimez():
         try:
-            url = 'https://45.12.2.2/'
+            url = 'https://45.12.2.28/'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -339,7 +339,7 @@ class gogoanime():
     # LIST ANIME A
     def a_list():
         try:
-            url = 'https://t.me/s/listbatch?q=daftar+isi%20[%20A%20]'
+            url = 'https://t.me/s/animepid?q=daftar+isi%20[%20A%20]'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -361,7 +361,7 @@ class gogoanime():
     # LIST ANIME A - 01      
     def a_list1():
         try:
-            url = 'https://t.me/s/listbatch?q=daftar%20anime%20a%20-%201'
+            url = 'https://t.me/s/animepid?q=daftar%20anime%20A%20-%201'
             session = HTMLSession()
             response = session.get(url)
             response_html = response.text
@@ -383,7 +383,7 @@ class gogoanime():
     # LIST ANIME B
     def b_list1():
         try:
-            url1 = 'https://t.me/s/downloadanimebatch?q=Daftar+Isi+%3A+%5B+B+%5D%20BANANA'
+            url1 = 'https://t.me/s/panimeid?q=Daftar+Isi+%3A+%5B+B+%5D%20BANANA'
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -405,7 +405,7 @@ class gogoanime():
         # Query kuronime
     def anime_episode(animeid):
         try:
-            url1 = 'https://45.12.2.2/anime/{}'.format(animeid)
+            url1 = 'https://45.12.2.28/anime/{}'.format(animeid)
             session = HTMLSession()
             response = session.get(url1)
             response_html = response.text
@@ -428,7 +428,7 @@ class gogoanime():
 
     
     def jugad(animeid, episode_num):
-        url = f"https://nanimex.org/episode/{animeid}-episode-{episode_num}"
+        url = f"https://nanimex2.com/episode/{animeid}-episode-{episode_num}"
         headers = {'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36'}
 
         response = requests.get(url, headers=headers)
