@@ -380,8 +380,8 @@ class Anime():
                     file='https://media.giphy.com/media/4pk6ba2LUEMi4/giphy.gif',
                 )  
 
-    @bot.on(events.NewMessage(pattern="/filep"))
-    async def event_handler_file(event):
+    @bot.on(events.NewMessage(pattern="/pidp"))
+    async def event_handler_pid(event):
         if event.chat_id < 0:
             await event.reply("If you want to download in file contact me in pm\n@Anime_Gallery_Robot")
             return
@@ -404,7 +404,7 @@ class Anime():
             await event.reply("Something went wrong.....\nCheck if you entered command properly\n\nUse /help or go to \n@Anime_Gallery_Robot_Support if you have any doubts")
 
     @bot.on(events.NewMessage(pattern="/download"))
-    async def event_handler_file(event):
+    async def event_handler_pid(event):
         try:
             text = event.raw_text.split()
             text.pop(0)
